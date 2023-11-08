@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fun with drawing lines!</title>
+        <script src="https://pixijs.download/release/pixi.min.js"></script>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            const app = new PIXI.Application({
+                width: window.innerWidth,
+                height: window.innerHeight,
+                antialias: true
+            });
+
+            app.renderer.view.style.position = "absolute";
+            
+            document.body.appendChild(app.view);
+
+            for (let x = 0; x <= window.innerWidth; x += 100) {
+                const line = new PIXI.Graphics();
+                line.lineStyle(1, 0xFF0000, 1)
+                .moveTo(x, 0)
+                .lineTo(x, window.innerHeight);
+                app.stage.addChild(line);
+            }
+            for (let y = 0; y <= window.innerHeight; y += 100) {
+                const horLine = new PIXI.Graphics();
+                horLine.lineStyle(1, 0xFF0000, 1)
+                .moveTo(0, y)
+                .lineTo(window.innerWidth, y);
+                app.stage.addChild(horLine);
+            }
+        </script>
+    </body>
+</html>
